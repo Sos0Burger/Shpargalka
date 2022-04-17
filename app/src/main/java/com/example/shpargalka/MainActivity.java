@@ -2,6 +2,7 @@ package com.example.shpargalka;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,7 +25,13 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id)
             {
                 String selectedItem = (String)parent.getItemAtPosition(position);
+                createIntent(selectedItem);
             }
         });
+
+    }
+    private void createIntent(String item){
+        Intent intent = new Intent(this, window_in.class);
+        intent.putExtra("crypt", item.toString());
     }
 }
