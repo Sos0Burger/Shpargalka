@@ -33,5 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private void createIntent(String item){
         Intent intent = new Intent(this, window_in.class);
         intent.putExtra("crypt", item.toString());
+        startActivity(intent);
     }
 }
