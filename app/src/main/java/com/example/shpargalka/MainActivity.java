@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,19 +21,16 @@ public class MainActivity extends AppCompatActivity {
         String[] crypto = getResources().getStringArray(R.array.Crypto);
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, crypto);
         cryptoList.setAdapter(adapter);
-        cryptoList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        Intent intent = new Intent(this, window_in.class);
+        cryptoList.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id)
             {
-                String selectedItem = (String)parent.getItemAtPosition(position);
-                createIntent(selectedItem);
+                intent.putExtra("key", ((TextView)v).getText() + ".html");
+                startActivity(intent);
             }
         });
 
-    }
-    private void createIntent(String item){
-        Intent intent = new Intent(this, window_in.class);
-        intent.putExtra("crypt", item.toString());
-        startActivity(intent);
     }
 }
