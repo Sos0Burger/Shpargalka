@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         ListView cryptoList = findViewById(R.id.cryptoList);
         String[] crypto = getResources().getStringArray(R.array.Crypto);
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, crypto);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, R.layout.list_design, crypto);
         cryptoList.setAdapter(adapter);
         Intent intent = new Intent(this, window_in.class);
         cryptoList.setOnItemClickListener(new AdapterView.OnItemClickListener()
